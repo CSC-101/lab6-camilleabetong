@@ -37,12 +37,44 @@ def selection_sort(values:list[int]) -> None:
 
 
 # Part 1
-
+def selection_sort_books(books: list[data.Book]):
+    n = len(books)
+    for i in range(n):
+        min_index = i
+        for j in range(i + 1, n):
+            if books[j].title < books[min_index].title:
+                min_index = j
+        books[i], books[min_index] = books[min_index], books[i]
 
 # Part 2
-
+def swap_case(input_str: str) -> str:
+    result = []
+    for char in input_str:
+        if char.islower():
+            result.append(char.upper())
+        elif char.isupper():
+            result.append(char.lower())
+        else:
+            result.append(char)
+    return ''.join(result)
 
 # Part 3
-
+def str_translate(input_str: str, old: str, new: str) -> str:
+    result = []
+    for char in input_str:
+        if char == old:
+            result.append(new)
+        else:
+            result.append(char)
+    return ''.join(result)
 
 # Part 4
+def histogram(input_str: str) -> dict:
+    count = {}
+    words = input_str.split()
+    for word in words:
+        if word in count:
+            count[word] += 1
+        else:
+            count[word] = 1
+    return count
